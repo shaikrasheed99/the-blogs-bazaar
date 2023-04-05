@@ -1,0 +1,35 @@
+.navbar {
+    max-width: 50vw;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    margin: 3vw auto;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 1.1vw;
+}
+
+.navbar h1 {
+    color: darkgray;
+    font-size: 2vw;
+}
+
+.navbar .links {
+    margin-left: auto;
+}
+
+.navbar a {
+    margin-left: 1vw;
+    text-decoration: none;
+    padding: 0.5vw;
+}
+
+.navbar #new-blog {
+    color: white;
+    background-color: cadetblue;
+    border-radius: 1vw;
+    padding: 0.5vw 1vw;
+}
+
+.navbar a:hover {
+    color: darkgray;
+}
