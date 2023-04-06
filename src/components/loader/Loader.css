@@ -1,0 +1,24 @@
+.loader {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spin {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: solid 0.7vw cyan;
+    border-bottom-color: #333;
+    animation: 2s linear infinite spinner;
+}
+
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
