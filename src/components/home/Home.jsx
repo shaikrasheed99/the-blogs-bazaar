@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogList from "../blogList/BlogList";
+import Loader from "../loader/Loader";
 import "./Home.css"
 
 const Home = () => {
-    const [blogs, setBlogs] = useState([
-        {title: "Title A", author: "Author A", id: 1},
-        {title: "Title B", author: "Author B", id: 2},
-        {title: "Title C", author: "Author c", id: 3},
-    ]);
+    const [blogs, setBlogs] = useState(null);
+    const [areBlogsEmpty, setAreBlogsEmpty] = useState(true);
+    const blogsApiLink = "http://localhost:3000/blogs";
+
+    useEffect(() => {
+        fetch(blogsApiLink)
+            .then((res) => res.json())
+            .then((data) => {
+                setBlogs(data);
+                setAreBlogsEmpty(false);
+            })
+            .catch((error) => console.log(error))
+    }, []);
 
     const handleDelete = (blogId) => {
         const filteredBlogs = blogs.filter((blog) => blog.id !== blogId);
@@ -17,7 +26,8 @@ const Home = () => {
     return (
         <div className="home">
             <h1>List of blogs!</h1>
-            <BlogList blogs={blogs} handleDelete={handleDelete}/>
+            {areBlogsEmpty && <Loader />}
+            {blogs && <BlogList blogs={blogs} handleDelete={handleDelete}/>}
         </div>
     );
 }
