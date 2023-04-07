@@ -34,16 +34,16 @@ const Home = () => {
         <div className="home">
             {error && <Error />}
             {shouldLoad &&
-                <div>
+                <>
                     <h1>List of blogs!</h1> 
                     <Loader />
-                </div>
+                </>
             }
             {blogs && 
-                <div>
+                <>
                     <h1>List of blogs!</h1>
                     <BlogList blogs={blogs} handleDelete={handleDelete}/>
-                </div>
+                </>
             }
         </div>
     );
