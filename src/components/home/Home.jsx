@@ -1,39 +1,17 @@
-import { useEffect, useState } from "react";
 import BlogList from "../blogList/BlogList";
 import Loader from "../loader/Loader";
 import Error from "../error/Error";
+import useFetch from "../../hooks/useFetch";
 import "./Home.css"
 
 const Home = () => {
-    const [blogs, setBlogs] = useState(null);
-    const [shouldLoad, setShouldLoad] = useState(true);
-    const [error, setError] = useState(null);
     const blogsApiLink = "http://localhost:3000/blogs";
-
-    useEffect(() => {
-        fetch(blogsApiLink)
-            .then((res) => res.json())
-            .then((data) => {
-                setBlogs(data);
-                setShouldLoad(false);
-                setError(null);
-            })
-            .catch((error) => {
-                console.log(error);
-                setError(error);
-                setShouldLoad(false);
-            })
-    }, []);
-
-    const handleDelete = (blogId) => {
-        const filteredBlogs = blogs.filter((blog) => blog.id !== blogId);
-        setBlogs(filteredBlogs);
-    }
+    const {data: blogs, isLoading, error} = useFetch(blogsApiLink);
 
     return (
         <div className="home">
             {error && <Error />}
-            {shouldLoad &&
+            {isLoading &&
                 <>
                     <h1>List of blogs!</h1> 
                     <Loader />
@@ -42,7 +20,7 @@ const Home = () => {
             {blogs && 
                 <>
                     <h1>List of blogs!</h1>
-                    <BlogList blogs={blogs} handleDelete={handleDelete}/>
+                    <BlogList blogs={blogs} />
                 </>
             }
         </div>
