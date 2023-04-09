@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CreateBlog.css";
 
 const CreateBlog = () => {
@@ -6,12 +7,13 @@ const CreateBlog = () => {
     const [author, setAuthor] = useState("");
     const [body, setBody] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const blog = {title, author, body};
-        const url = "http://localhost:3000/blogs";
+        const url = "http://localhost:3001/blogs";
 
         setIsLoading(true);
 
@@ -22,6 +24,7 @@ const CreateBlog = () => {
         }).then(() => {
             console.log("Blog has added!!")
             setIsLoading(false);
+            navigate("/");
         }).catch((error) => {
             console.log(error)
         })   

@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import "./Home.css"
 
 const Home = () => {
-    const blogsApiLink = "http://localhost:3000/blogs";
+    const blogsApiLink = "http://localhost:3001/blogs";
     const {data: blogs, isLoading, error} = useFetch(blogsApiLink);
 
     return (
