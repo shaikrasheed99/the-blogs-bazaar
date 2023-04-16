@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
-import Error from "../error/Error";
-import Loader from "../loader/Loader";
+import useFetch from "../../../hooks/useFetch";
+import Error from "../../layouts/error/Error";
+import Loader from "../../layouts/loader/Loader";
 import "./Blog.css"
 
 const Blog = () => {

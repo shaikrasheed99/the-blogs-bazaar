@@ -1,7 +1,7 @@
 import BlogList from "../blogList/BlogList";
-import Loader from "../loader/Loader";
-import Error from "../error/Error";
-import useFetch from "../../hooks/useFetch";
+import Loader from "../../layouts/loader/Loader";
+import Error from "../../layouts/error/Error";
+import useFetch from "../../../hooks/useFetch";
 import "./Home.css"
 
 const Home = () => {
